@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalProgramming.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalProgramming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalProgramming_main.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalProgramming_main.iml" group="functionalProgramming" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalProgramming_test.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalProgramming_test.iml" group="functionalProgramming" />
+    </modules>
+  </component>
+</project>
