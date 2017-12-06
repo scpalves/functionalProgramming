@@ -1,38 +1,43 @@
-package lambda;
+package composeFunction;
 
-public class Apple {
-    public enum Color {
-        GREEN("green"), RED("red"), YELLOW("yellow");
+import java.util.Arrays;
+import java.util.List;
 
-        private final String color;
+public class Article {
+    public enum Tag {
+        FANTASY,
+        THRILLER,
+        KIDS;
 
-        private Color(String color) {
-            this.color = color;
-        }
 
-        @Override
-        public String toString() {
-            return color;
-        }
-    };
+    }
+    private final String author;
 
-    private final Color color;
-    private final Integer weight;
-
-    public Apple(Color color, int weight) {
-        this.color = color;
-        this.weight = weight;
+    private final Integer rating;
+    private final List<Tag> tags;
+    Article(String author, Integer rating, Tag... tags) {
+        this.author = author;
+        this.rating = rating;
+        this.tags = Arrays.asList(tags);
     }
 
-    public Integer getWeight() {
-        return weight;
+    String getAuthor() {
+        return author;
+    }
+
+    List<Tag> getTags() {
+        return tags;
+    }
+
+    public Integer getRating() {
+        return rating;
     }
 
     @Override
     public String toString() {
-        return "Apple{" +
-                "color=" + color +
-                ", weight=" + weight +
+        return "Article{" +
+                "Author= " + author +
+                ", tags= " + tags.toString() +
                 '}';
     }
 }
