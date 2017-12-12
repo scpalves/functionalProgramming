@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace NameStats
@@ -20,33 +21,65 @@ namespace NameStats
                 if(person.FirstName == firstName)
                     count++;
             }
-            
+
             return count;
         }
 
         public Dictionary<string, long> GetCompleteNameCount()
         {
-            throw new NotImplementedException();
+            var nameCounts = new Dictionary<string, long>();
+            foreach(var person in _persons)
+            {
+                if(!nameCounts.ContainsKey(person.FirstName))
+                    nameCounts.Add(person.FirstName, 0);
+
+                ++nameCounts[person.FirstName];
+            }
+
+            return nameCounts;
         }
 
         public IEnumerable<string> GetUniqueCities()
         {
-            throw new NotImplementedException();
+            var cities = new HashSet<string>();
+            foreach(var person in _persons)
+                cities.Add(person.City);
+
+            return cities;
         }
 
         public IEnumerable<Person> GetPersonsInCity(string cityName)
         {
-            throw new NotImplementedException();
+            var livesInCity = new List<Person>();
+
+            foreach(var person in _persons)
+            {
+                if(person.City.Equals(cityName))
+                    livesInCity.Add(person);
+            }
+
+            return livesInCity;
         }
 
-        public Dictionary<String, IEnumerable<Person>> GetPersonsGroupedByCity()
+        public Dictionary<String, List<Person>> GetPersonsGroupedByCity()
         {
-            throw new NotImplementedException();
+            var cityPeople = new Dictionary<string, List<Person>>();
+            foreach(var person in _persons)
+            {
+                if(cityPeople.ContainsKey(person.City))
+                    cityPeople[person.City].Add(person);
+                else
+                    cityPeople.Add(person.City, new List<Person>() {person});
+            }
+
+            return cityPeople;
         }
 
         public IEnumerable<Person> GetOldestPersonsInCity(string city)
         {
-            throw new NotImplementedException();
+            var personsInCity = GetPersonsGroupedByCity()[city];
+            
+            return personsInCity;
         }
 
         public string GetBiggestCity()

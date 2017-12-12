@@ -12,7 +12,7 @@ namespace NameStats
 
         IEnumerable<Person> GetPersonsInCity(string cityName);
 
-        Dictionary<string, IEnumerable<Person>> GetPersonsGroupedByCity();
+        Dictionary<string, List<Person>> GetPersonsGroupedByCity();
 
         IEnumerable<Person> GetOldestPersonsInCity(string city);
 

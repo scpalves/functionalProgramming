@@ -12,6 +12,7 @@ namespace NameStats
             var statistics = new Statistics();
             string name = args[0];
             Console.WriteLine($"Persons with name {name}: {statistics.GetNumberOfUsersWithFirstName(name)}");
+            statistics.GetCompleteNameCount();
         }
     }
 }
