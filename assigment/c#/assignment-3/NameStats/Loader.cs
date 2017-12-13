@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -10,9 +9,6 @@ namespace NameStats
 
         public Loader(string filePath)
         {
-            if(!File.Exists(filePath))
-                throw new Exception();
-
             Persons = new List<Person>();
 
             using(StreamReader streamReader = File.OpenText(filePath))
