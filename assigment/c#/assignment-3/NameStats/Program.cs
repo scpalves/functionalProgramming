@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace NameStats
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var statistics = new Statistics();
             string name = args[0];
