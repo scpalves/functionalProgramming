@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace NameStats.Tests
+namespace Exercise3.Tests
 {
     [TestClass]
     public class StatisticsTests
@@ -35,7 +35,7 @@ namespace NameStats.Tests
         [TestMethod]
         public void GetUniqueCities_return_477()
         {
-            var uniqueCities = _statistics.GetUniqueCities().ToList();
+            var uniqueCities = _statistics.GetUniqueCities();
             Debug.WriteLine($"{uniqueCities.Count} unique cities");
 
             Assert.AreEqual(477, uniqueCities.Count);
@@ -44,7 +44,7 @@ namespace NameStats.Tests
         [TestMethod]
         public void GetPersonsInCity_Chester_returns_64_people_in_Chester()
         {
-            var personsInChester = _statistics.GetPersonsInCity("Chester").ToList();
+            var personsInChester = _statistics.GetPersonsInCity("Chester");
             Debug.WriteLine($"{personsInChester.Count} persons in Chester");
 
             Assert.AreEqual(64, personsInChester.Count);
@@ -63,7 +63,7 @@ namespace NameStats.Tests
         [TestMethod]
         public void GetOldestPersonsInCity_for_Chester_has_5_with_same_age()
         {
-            var oldestInChester = _statistics.GetOldestPersonsInCity("Chester").ToList();
+            var oldestInChester = _statistics.GetOldestPersonsInCity("Chester");
             Debug.WriteLine($"{oldestInChester.Count} persons are born on {oldestInChester.FirstOrDefault()?.DateOfBirth}");
 
             Assert.AreEqual(5, oldestInChester.Count);

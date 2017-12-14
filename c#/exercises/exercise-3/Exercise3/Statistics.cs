@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NameStats
+namespace Exercise3
 {
     public class Statistics : IStatistics
     {
@@ -14,7 +14,7 @@ namespace NameStats
 
         public long GetNumberOfUsersWithFirstName(string firstName)
         {
-            int count = 0;
+            var count = 0;
             foreach(var person in _persons)
             {
                 if(person.FirstName == firstName)
@@ -38,7 +38,7 @@ namespace NameStats
             return nameCounts;
         }
 
-        public IEnumerable<string> GetUniqueCities()
+        public HashSet<string> GetUniqueCities()
         {
             var cities = new HashSet<string>();
             foreach(var person in _persons)
@@ -47,7 +47,7 @@ namespace NameStats
             return cities;
         }
 
-        public IEnumerable<Person> GetPersonsInCity(string cityName)
+        public IList<Person> GetPersonsInCity(string cityName)
         {
             var livesInCity = new List<Person>();
 
@@ -74,7 +74,7 @@ namespace NameStats
             return cityPeople;
         }
 
-        public IEnumerable<Person> GetOldestPersonsInCity(string city)
+        public IList<Person> GetOldestPersonsInCity(string city)
         {
             var personsInCity = GetPersonsGroupedByCity()[city];
             personsInCity.Sort(new AgeComparator().Compare);
@@ -94,8 +94,8 @@ namespace NameStats
         public string GetBiggestCity()
         {
             var personsByCities = GetPersonsGroupedByCity();
-            int maxValue = 0;
-            string city = "";
+            var maxValue = 0;
+            var city = "";
 
             foreach (var personsInCity in personsByCities)
             {
@@ -112,12 +112,12 @@ namespace NameStats
         public string GetCityWithHighestStandardDeviation()
         {
             var personsByCities = GetPersonsGroupedByCity();
-            string city = "";
-            double maxStandardDeviation = 0.0d;
+            var city = "";
+            var maxStandardDeviation = 0.0d;
 
             foreach (var personsByCity in personsByCities)
             {
-                List<long> ages = ConvertPersonsToAges(personsByCity.Value);
+                var ages = ConvertPersonsToAges(personsByCity.Value);
                 var standardDeviation = StandardDeviation.CalculateStandardDeviation(ages);
 
                 if (standardDeviation > maxStandardDeviation)
@@ -133,12 +133,12 @@ namespace NameStats
         public string GetCityWithLowestStandardDeviation()
         {
             var personsByCities = GetPersonsGroupedByCity();
-            string city = "";
-            double minStandardDeviation = double.MaxValue;
+            var city = "";
+            var minStandardDeviation = double.MaxValue;
 
             foreach (var personsByCity in personsByCities)
             {
-                List<long> ages = ConvertPersonsToAges(personsByCity.Value);
+                var ages = ConvertPersonsToAges(personsByCity.Value);
                 var standardDeviation = StandardDeviation.CalculateStandardDeviation(ages);
 
                 if (standardDeviation < minStandardDeviation)
@@ -154,11 +154,11 @@ namespace NameStats
         public double GetHighestStandardDeviation()
         {
             var personsByCities = GetPersonsGroupedByCity();
-            double maxStandardDeviation = 0.0d;
+            var maxStandardDeviation = 0.0d;
 
             foreach (var personsByCity in personsByCities)
             {
-                List<long> ages = ConvertPersonsToAges(personsByCity.Value);
+                var ages = ConvertPersonsToAges(personsByCity.Value);
                 var standardDeviation = StandardDeviation.CalculateStandardDeviation(ages);
 
                 if (standardDeviation > maxStandardDeviation)

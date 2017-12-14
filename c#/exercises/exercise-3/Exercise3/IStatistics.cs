@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace NameStats
+namespace Exercise3
 {
     public interface IStatistics 
     {
@@ -8,13 +8,13 @@ namespace NameStats
 
         Dictionary<string, long> GetCompleteNameCount();
 
-        IEnumerable<string> GetUniqueCities();
+        HashSet<string> GetUniqueCities();
 
-        IEnumerable<Person> GetPersonsInCity(string cityName);
+        IList<Person> GetPersonsInCity(string cityName);
 
         Dictionary<string, List<Person>> GetPersonsGroupedByCity();
 
-        IEnumerable<Person> GetOldestPersonsInCity(string city);
+        IList<Person> GetOldestPersonsInCity(string city);
 
         string GetBiggestCity();
 
