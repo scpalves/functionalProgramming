@@ -1,6 +1,7 @@
-package composeFunction;
+package examples.composeFunction;
 
-import composeFunction.Article.Tag;
+
+import examples.composeFunction.Article.Tag;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -41,10 +42,10 @@ public class Articles {
         final List<Article> inventory = new ArrayList<>();
         updateInventory(inventory);
         final Optional<Article> danbrownsBest = bestByAuthor.apply("Dan Brown", inventory);
-        System.out.println("Dan Brown's best: "+ danbrownsBest.get().toString());
+        System.out.println("Dan Brown's best: " + danbrownsBest.get().toString());
 
         final Optional<Article> bestThriller = bestByTag.apply(Tag.THRILLER, inventory);
-        System.out.println("Best Thriller: "+ danbrownsBest.get().toString());
+        System.out.println("Best Thriller: " + danbrownsBest.get().toString());
 
     }
 
