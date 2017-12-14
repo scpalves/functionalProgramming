@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -57,7 +58,9 @@ namespace exercise_1
         [TestMethod]
         public void FindEvenLenghtWords()
         {
-            var output = new List<string>();
+            var output = _words
+                .Where(word => word.Length % 2 == 0)
+                .ToList();
 
             CollectionAssert.AreEqual(new[]
             {
@@ -70,7 +73,7 @@ namespace exercise_1
         [TestMethod]
         public void CountWords()
         {
-            var count = 0;
+            var count = _words.Count;
 
             Assert.AreEqual(20, count);
         }
@@ -80,7 +83,7 @@ namespace exercise_1
         [TestMethod]
         public void CountNumberOfCharactersInWords()
         {
-            var count = 0;
+            var count = _words.Select(word => word.Length).Sum();
 
             Assert.AreEqual(105, count);
         }
@@ -90,7 +93,9 @@ namespace exercise_1
         public void FindFirstSquareThatIsDivisibleBy5()
         {
             // Hint Enumerable.Range(1, 100), creates a list of numbers 1, 2, 3.. 100.
-            var first = 0;
+            var first = Enumerable.Range(1, 50)
+                .Select(x => x * x)
+                .FirstOrDefault(x => x % 5 == 0);
 
             Assert.AreEqual(25, first);
         }

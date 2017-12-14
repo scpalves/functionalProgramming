@@ -31,7 +31,7 @@ namespace exercise_2
         [TestMethod]
         public void CountLinesInFile()
         {
-            var lineCount = 0;
+            var lineCount = _streamReader.ReadToEnd().Split('\n').Length;
 
             Assert.AreEqual(11, lineCount);
         }
@@ -40,7 +40,7 @@ namespace exercise_2
         [TestMethod]
         public void JoinLineRange()
         {
-            var output = "";
+            var output = string.Join("", _streamReader.ReadToEnd().Split('\n').Skip(1).Take(2));
 
             Assert.AreEqual("Scania is introducing a new truck range, the result of ten years of" +
                             "development work and investments in the region of SEK 20 billion.", output);
@@ -59,7 +59,10 @@ namespace exercise_2
         [TestMethod]
         public void ListOfAllWords()
         {
-            var allWords = new List<string>();
+            var allWords = Regex
+                .Split(_streamReader.ReadToEnd(), REGEXP)
+                .Where(word => !string.IsNullOrEmpty(word))
+                .ToList();
 
             CollectionAssert.AreEqual(new[]
             {
@@ -82,7 +85,12 @@ namespace exercise_2
         [TestMethod]
         public void SortedLowerCase()
         {
-            var sortedLowerCaseWords = new List<string>();
+            var sortedLowerCaseWords = Regex
+                .Split(_streamReader.ReadToEnd(), REGEXP)
+                .Where(word => !string.IsNullOrEmpty(word))
+                .OrderBy(word => word)
+                .Select(word => word.ToLower())
+                .ToList();
 
             CollectionAssert.AreEqual(new[]
             {
@@ -105,7 +113,13 @@ namespace exercise_2
         [TestMethod]
         public void SortedLowerCaseDistinctByLengthThenAlphabetically()
         {
-            var sortedLowerCaseWords = new List<string>();
+            var sortedLowerCaseWords = Regex
+                .Split(_streamReader.ReadToEnd(), REGEXP)
+                .Where(word => !string.IsNullOrEmpty(word))
+                .OrderBy(word => word.Length)
+                .ThenBy(word => word)
+                .Select(word => word.ToLower())
+                .ToList();
 
             CollectionAssert.AreEqual(new[]
             {
@@ -164,7 +178,17 @@ namespace exercise_2
         [TestMethod]
         public void NestedGrouping()
         {
-            var nestedDictionary = new Dictionary<string, Dictionary<int, List<string>>>();
+            var nestedDictionary = Regex
+                .Split(_streamReader.ReadToEnd(), REGEXP)
+                .Select(word => word.ToLower())
+                .Where(word => !string.IsNullOrEmpty(word))
+                .GroupBy(word => word.Substring(0, 1), (key, subDictionary) =>
+                    new
+                    {
+                        Key = key,
+                        SubDict = subDictionary.GroupBy(word => word.Length)
+                            .ToDictionary(grouping => grouping.Key, grouping => grouping.ToList())
+                    }).ToDictionary(x => x.Key, x => x.SubDict);
 
             CollectionAssert.AreEqual(new[] { "able", "area" }, nestedDictionary["a"][4]);
             CollectionAssert.AreEqual(new[] { "billion" }, nestedDictionary["b"][7]);
