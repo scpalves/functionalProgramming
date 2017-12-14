@@ -1,9 +1,10 @@
 package exercises;
 
 
-import com.improved.umbrella.streams.Loader;
-import com.improved.umbrella.streams.Person;
-import com.improved.umbrella.streams.Statistics;
+import exercises.objectOriented.Exercise3OO;
+import exercises.streams.Loader;
+import exercises.streams.Person;
+import exercises.streams.Statistics;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

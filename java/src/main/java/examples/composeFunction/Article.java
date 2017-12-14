@@ -1,4 +1,4 @@
-package composeFunction;
+package examples.composeFunction;
 
 import java.util.Arrays;
 import java.util.List;

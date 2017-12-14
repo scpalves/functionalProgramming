@@ -1,4 +1,4 @@
-package higherOrderFunctions;
+package examples.higherOrderFunctions;
 
 import java.util.Arrays;
 import java.util.Comparator;

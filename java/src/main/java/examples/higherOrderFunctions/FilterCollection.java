@@ -1,4 +1,4 @@
-package higherOrderFunctions;
+package examples.higherOrderFunctions;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package localVariables;
+package examples.localVariables;
 
 import java.util.Arrays;
 import java.util.List;
