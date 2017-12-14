@@ -11,7 +11,7 @@ public class TestStreams {
         int sum = 0;
 
         for (Integer number : numbers) {
-            sum = sum + number; //sum is not immutable
+            sum = sum + number;
         }
         System.out.println("Sum of numbers: "+ sum);
 
