@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NameStats
+namespace Exercise3
 {
     public class StandardDeviation
     {
@@ -12,7 +12,7 @@ namespace NameStats
 
         private static double GetSumOfDiffsSquared(IList<long> values, double average)
         {
-            double sum = 0.0d;
+            var sum = 0.0d;
             foreach (var value in values)
             {
                 sum += Math.Pow((value - average), 2);
@@ -23,7 +23,7 @@ namespace NameStats
 
         private static double GetAverage(IList<long> values)
         {
-            double sum = 0.0d;
+            var sum = 0.0d;
             foreach (var value in values)
             {
                 sum += value;

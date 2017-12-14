@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NameStats
+namespace Exercise3
 {
     public class AgeComparator : IComparer<Person>
     {

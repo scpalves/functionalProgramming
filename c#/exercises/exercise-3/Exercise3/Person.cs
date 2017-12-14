@@ -1,6 +1,6 @@
 using System;
 
-namespace NameStats
+namespace Exercise3
 {
     public class Person
     {
